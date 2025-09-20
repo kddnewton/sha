@@ -115,7 +115,7 @@ main(int argc, char *argv[]) {
 
     for (index = 0; index < bit_length; index += CHAR_BIT * 1024) {
         uint64_t chunk_bits = (bit_length - index < CHAR_BIT * 1024 ? bit_length - index : CHAR_BIT * 1024);
-        uint64_t chunk_read = fread(buffer, 1, (chunk_bits + CHAR_BIT - 1) / CHAR_BIT, stdin);
+        uint64_t chunk_read = fread(buffer, (chunk_bits + CHAR_BIT - 1) / CHAR_BIT, 1, stdin);
 
         if (chunk_read != 1) {
             fprintf(stderr, "Error reading from stdin\n");
